@@ -1,4 +1,3 @@
-using Amazon.SecretsManager;
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Initialization;
 using FluentMigrator.Runner.VersionTableInfo;

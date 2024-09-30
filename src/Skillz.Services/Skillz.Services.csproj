@@ -28,7 +28,7 @@
       <Folder Include="Context\Config\" />
       <Folder Include="Models\Requests\" />
       <Folder Include="Services\Exceptions\" />
-      <Folder Include="Services\Mappers\" />
+      <Folder Include="Services\Models\" />
     </ItemGroup>
 
 </Project>

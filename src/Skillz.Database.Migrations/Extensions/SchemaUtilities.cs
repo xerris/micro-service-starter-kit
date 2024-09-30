@@ -1,7 +1,7 @@
 using System.Text;
 using Skillz.Database.Migrations.Constants;
 
-namespace Skillz.Database.Migrations.Utilities;
+namespace Skillz.Database.Migrations.Extensions;
 
 public static class SchemaUtilities
 {

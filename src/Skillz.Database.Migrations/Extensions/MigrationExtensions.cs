@@ -1,7 +1,6 @@
 using FluentMigrator;
 using FluentMigrator.Builders.Alter.Table;
 using FluentMigrator.Builders.Create.Table;
-using Skillz.Database.Migrations.Utilities;
 
 namespace Skillz.Database.Migrations.Extensions;
 

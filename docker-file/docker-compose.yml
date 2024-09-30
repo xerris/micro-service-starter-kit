@@ -1,13 +1,13 @@
 services:
   postgres:
     image: postgres:latest
-    container_name: local-starterkit
+    container_name: local-starter-kit
     environment:
       POSTGRES_DB: starterkit
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5433:5432"
+      - "5432:5432"
     networks:
       - pg-network
     volumes:
