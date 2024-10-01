@@ -34,10 +34,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Skillz.Services\Skillz.Services.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Models\Validators\" />
     </ItemGroup>
 

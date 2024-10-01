@@ -5,7 +5,7 @@ namespace Skillz.Database.Migrations;
 [VersionTableMetaData]
 public class CustomMetadataTable : IVersionTableMetaData
 {
-    public object ApplicationContext { get; set; }
+    public object ApplicationContext { get; set; } = null!;
     public bool OwnsSchema => true;
     public string SchemaName => string.Empty;
     public string TableName => "_migration_version_info";
