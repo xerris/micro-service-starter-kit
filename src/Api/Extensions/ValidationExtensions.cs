@@ -1,6 +1,6 @@
 using FluentValidation.Results;
 
-namespace Skillz.Api.Extensions;
+namespace Api.Extensions;
 
 public class ValidationResponse
 {

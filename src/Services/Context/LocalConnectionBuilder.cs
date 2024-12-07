@@ -1,6 +1,6 @@
 using System.Data;
 
-namespace Skillz.Services.Context;
+namespace Services.Context;
 
 public interface IConnectionBuilder
 {

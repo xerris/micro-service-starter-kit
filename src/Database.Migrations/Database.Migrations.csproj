@@ -8,14 +8,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentMigrator" Version="5.2.0" />
-      <PackageReference Include="FluentMigrator.Runner" Version="5.2.0" />
-      <PackageReference Include="FluentMigrator.Runner.Postgres" Version="5.2.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-      <PackageReference Include="Serilog" Version="4.0.1" />
+      <PackageReference Include="FluentMigrator" Version="6.2.0" />
+      <PackageReference Include="FluentMigrator.Runner" Version="6.2.0" />
+      <PackageReference Include="FluentMigrator.Runner.Postgres" Version="6.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+      <PackageReference Include="Serilog" Version="4.2.0" />
       <PackageReference Include="Serilog.Expressions" Version="5.0.0" />
       <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-      <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.14" />
+      <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.15" />
     </ItemGroup>
 
     <ItemGroup>

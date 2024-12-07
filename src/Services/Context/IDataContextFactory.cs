@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Skillz.Services.Context;
+namespace Services.Context;
 
 public interface IDataContextFactory
 {

@@ -8,16 +8,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FastEndpoints" Version="5.29.0" />
-        <PackageReference Include="FastEndpoints.Generator" Version="5.29.0">
+        <PackageReference Include="FastEndpoints" Version="5.32.0" />
+        <PackageReference Include="FastEndpoints.Generator" Version="5.32.0">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Serilog" Version="4.0.1" />
-        <PackageReference Include="Serilog.AspNetCore" Version="8.0.2" />
+        <PackageReference Include="Serilog" Version="4.2.0" />
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-        <PackageReference Include="Xerris.DotNet.Core" Version="0.1.14" />
-        <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.14" />
+        <PackageReference Include="Xerris.DotNet.Core" Version="0.1.18" />
+        <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.15" />
     </ItemGroup>
 
     <ItemGroup>

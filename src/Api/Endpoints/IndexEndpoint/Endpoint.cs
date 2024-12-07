@@ -1,4 +1,4 @@
-namespace Skillz.Api.Endpoints.IndexEndpoint;
+namespace Api.Endpoints.IndexEndpoint;
 
 public class IndexResponse
 {

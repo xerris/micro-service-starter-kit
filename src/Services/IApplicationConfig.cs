@@ -1,6 +1,6 @@
 using Xerris.DotNet.Core;
 
-namespace Skillz.Services;
+namespace Services;
 
 public interface IApplicationConfig
 {

@@ -1,4 +1,4 @@
-using Skillz.Database.Migrations;
+using Database.Migrations;
 using Xerris.DotNet.Core;
 
 if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("LOCAL_DB_HOST")))

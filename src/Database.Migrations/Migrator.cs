@@ -2,7 +2,7 @@ using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
 using Xerris.DotNet.Core;
 
-namespace Skillz.Database.Migrations;
+namespace Database.Migrations;
 
 public interface IMigrator
 {

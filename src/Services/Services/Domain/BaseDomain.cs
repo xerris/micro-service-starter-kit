@@ -1,4 +1,4 @@
-namespace Skillz.Services.Services.Domain;
+namespace Services.Services.Domain;
 
 public interface IEntity
 {

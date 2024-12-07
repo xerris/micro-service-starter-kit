@@ -1,4 +1,4 @@
-namespace Skillz.Services.Models.Validators;
+namespace Services.Models.Validators;
 
 public interface IValidator<T> where T : class
 {

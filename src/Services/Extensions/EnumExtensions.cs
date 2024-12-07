@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Skillz.Services.Extensions;
+namespace Services.Extensions;
 
 public static class EnumExtensions
 {

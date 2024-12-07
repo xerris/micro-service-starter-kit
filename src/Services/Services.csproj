@@ -8,27 +8,25 @@
 
     <ItemGroup>
       <PackageReference Include="EntityFrameworkCore.NamingConventions" Version="8.0.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.8" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
-      <PackageReference Include="Serilog" Version="4.0.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.1" />
+      <PackageReference Include="Serilog" Version="4.2.0" />
       <PackageReference Include="Serilog.Expressions" Version="5.0.0" />
       <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-      <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" />
-      <PackageReference Include="Xerris.DotNet.Core" Version="0.1.14" />
-      <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.14" />
+      <PackageReference Include="System.Text.Encodings.Web" Version="9.0.0" />
+      <PackageReference Include="Xerris.DotNet.Core" Version="0.1.18" />
+      <PackageReference Include="Xerris.DotNet.Core.Aws" Version="0.1.15" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Context\Config\" />
-      <Folder Include="Models\Requests\" />
       <Folder Include="Services\Exceptions\" />
-      <Folder Include="Services\Models\" />
     </ItemGroup>
 
 </Project>

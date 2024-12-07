@@ -4,11 +4,11 @@ using FluentMigrator.Runner.VersionTableInfo;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Skillz.Services;
-using Skillz.Services.Context;
+using Services;
+using Services.Context;
 using Xerris.DotNet.Core;
 
-namespace Skillz.Database.Migrations;
+namespace Database.Migrations;
 
 public class AppStart : IAppStartup
 {

@@ -1,6 +1,6 @@
-using Skillz.Services.Services.Domain;
+using Services.Services.Domain;
 
-namespace Skillz.Services.Services.Repositories;
+namespace Services.Services.Repositories;
 
 public interface IDataStore
 {

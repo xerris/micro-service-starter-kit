@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Skillz.Services.Context.Models;
-using Skillz.Services.Extensions;
+using Services.Context.Models;
+using Services.Extensions;
 using Xerris.DotNet.Core.Time;
 
-namespace Skillz.Services.Context;
+namespace Services.Context;
 
 public class DataContext: DbContext
 {

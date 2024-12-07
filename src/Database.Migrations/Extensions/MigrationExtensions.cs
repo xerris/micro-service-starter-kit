@@ -2,7 +2,7 @@ using FluentMigrator;
 using FluentMigrator.Builders.Alter.Table;
 using FluentMigrator.Builders.Create.Table;
 
-namespace Skillz.Database.Migrations.Extensions;
+namespace Database.Migrations.Extensions;
 
 public static class MigrationExtensions
 {

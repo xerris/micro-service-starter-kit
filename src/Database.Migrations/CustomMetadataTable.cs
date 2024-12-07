@@ -1,6 +1,6 @@
 using FluentMigrator.Runner.VersionTableInfo;
 
-namespace Skillz.Database.Migrations;
+namespace Database.Migrations;
 
 [VersionTableMetaData]
 public class CustomMetadataTable : IVersionTableMetaData
@@ -12,5 +12,6 @@ public class CustomMetadataTable : IVersionTableMetaData
     public string ColumnName => "version";
     public string DescriptionColumnName => "description";
     public string AppliedOnColumnName => "applied_on";
+    public bool CreateWithPrimaryKey => true;
     public string UniqueIndexName => "uc_version";
 }

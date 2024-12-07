@@ -1,4 +1,4 @@
-namespace Skillz.Services.Context.Models;
+namespace Services.Context.Models;
 
 public interface IDeleteable
 {

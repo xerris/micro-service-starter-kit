@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Xerris.DotNet.Core;
 
-namespace Skillz.Services;
+namespace Services;
 
 public class AppStart : IAppStartup
 {

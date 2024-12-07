@@ -1,7 +1,7 @@
 using System.Text.Json;
+using Api.Extensions;
 using Serilog;
-using Skillz.Api.Extensions;
-using Skillz.Services;
+using Services;
 using Xerris.DotNet.Core;
 
 var builder = WebApplication.CreateBuilder(args);

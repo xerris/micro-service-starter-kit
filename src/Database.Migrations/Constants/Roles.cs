@@ -1,4 +1,4 @@
-namespace Skillz.Database.Migrations.Constants;
+namespace Database.Migrations.Constants;
 
 public static class Roles
 {
