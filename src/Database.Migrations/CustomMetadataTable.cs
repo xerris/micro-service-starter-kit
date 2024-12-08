@@ -1,17 +1,15 @@
+using Database.Migrations.Constants;
 using FluentMigrator.Runner.VersionTableInfo;
 
 namespace Database.Migrations;
 
 [VersionTableMetaData]
-public class CustomMetadataTable : IVersionTableMetaData
+public class CustomMetadataTable : DefaultVersionTableMetaData
 {
-    public object ApplicationContext { get; set; } = null!;
-    public bool OwnsSchema => true;
-    public string SchemaName => string.Empty;
-    public string TableName => "_migration_version_info";
-    public string ColumnName => "version";
-    public string DescriptionColumnName => "description";
-    public string AppliedOnColumnName => "applied_on";
-    public bool CreateWithPrimaryKey => true;
-    public string UniqueIndexName => "uc_version";
+    public override bool OwnsSchema => true;
+    public override string SchemaName => Schemas.Public;
+    public override string TableName => "_migration_version_info";
+    public override string ColumnName => "version";
+    public override string DescriptionColumnName => "description";
+    public override string AppliedOnColumnName => "applied_on";
 }

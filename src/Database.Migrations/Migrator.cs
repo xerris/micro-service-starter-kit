@@ -16,7 +16,7 @@ public class Migrator : IMigrator
     {
         using var scope = IoC.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-        runner.MigrateUp();
+         runner.MigrateUp();
     }
 
     public void Downgrade(int version)

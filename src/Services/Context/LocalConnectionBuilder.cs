@@ -9,7 +9,7 @@ public interface IConnectionBuilder
 
 public class LocalConnectionBuilder : IConnectionBuilder
 {
-    public readonly string Server = "127.0.0.1";
+    public const string Server = "127.0.0.1";
     private readonly IApplicationConfig appConfig;
 
     public LocalConnectionBuilder(IApplicationConfig appConfig)
