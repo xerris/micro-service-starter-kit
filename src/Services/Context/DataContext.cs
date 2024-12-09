@@ -58,7 +58,6 @@ public class DataContext: DbContext
 
             entityEntry.CreatedOn = Clock.Utc.Now;
             entityEntry.ModifiedOn = Clock.Utc.Now;
-            entityEntry.SynchronizedOn = Clock.Utc.Now;
         }
 
         var modifiedEntries = ChangeTracker
@@ -70,7 +69,6 @@ public class DataContext: DbContext
             if(entry.Entity is not IAuditable entityEntry) continue;
 
             entityEntry.ModifiedOn = Clock.Utc.Now;
-            entityEntry.SynchronizedOn = Clock.Utc.Now;
 
             if (TokenUserId.HasValue)
                 entityEntry.ModifiedBy = TokenUserId.Value;
@@ -89,7 +87,6 @@ public class DataContext: DbContext
             if(entry.Entity is not IAuditable auditableEntry) continue;
 
             auditableEntry.ModifiedOn = Clock.Utc.Now;
-            auditableEntry.SynchronizedOn = Clock.Utc.Now;
 
             if (TokenUserId.HasValue)
                 auditableEntry.ModifiedBy = TokenUserId.Value;

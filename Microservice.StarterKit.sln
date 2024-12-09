@@ -7,6 +7,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database.Migrations", "src\Database.Migrations\Database.Migrations.csproj", "{E2813B16-CA68-4139-9743-1DECBBF55C58}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{3C4F63A4-8FEF-4C7F-8204-4A0456315CE9}"
+	ProjectSection(SolutionItems) = preProject
+		start-db.sh = start-db.sh
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{2A0A39EF-45F9-44FE-84E8-E210E55066F3}"
 	ProjectSection(SolutionItems) = preProject

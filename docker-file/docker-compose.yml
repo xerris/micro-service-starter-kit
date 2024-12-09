@@ -3,9 +3,9 @@ name: starter-kit-db
 services:
   postgres:
     image: postgres:latest
-    container_name: local-starter-kit
+    container_name: starter-kit-db
     environment:
-      POSTGRES_DB: starterkit
+      POSTGRES_DB: starter-kit
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:

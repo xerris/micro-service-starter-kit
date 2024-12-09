@@ -40,24 +40,12 @@ public static class MigrationExtensions
     public static IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax AddIsActive(this IAlterTableAddColumnOrAlterColumnSyntax syntax)
         => syntax.AddColumn("is_active").AsBoolean().NotNullable().WithDefaultValue(false);
 
-    public static ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax AddMandatoryIdColumnWithForeignKey(
+    public static ICreateTableColumnOptionOrForeignKeyCascadeOrWithColumnSyntax AddIdColumnWithForeignKey(
         this ICreateTableWithColumnSyntax syntax,
-        string fromTableName,
-        string fromColumnName,
-        string schema,
-        string toTableName,
-        string keyNameSuffix = "")
-        => syntax.WithColumn(fromColumnName).AsGuid().NotNullable().ForeignKey($"fk_{fromTableName}_{toTableName}{keyNameSuffix}", schema, toTableName, "id");
-
-    public static IAlterTableColumnOptionOrAddColumnOrAlterColumnOrForeignKeyCascadeSyntax AddIdColumnWithForeignKey(
-        this IAlterTableAddColumnOrAlterColumnSyntax syntax,
-        string fromTableName,
-        string fromColumnName,
-        string toSchema,
-        string toTableName,
-        string keyNameSuffix = "")
-        => syntax.AddColumn(fromColumnName).AsGuid().ForeignKey($"fk_{fromTableName}_{toTableName}{keyNameSuffix}", toSchema, toTableName, "id");
-
+        string fromTableName, string fromColumnName, string schema, string toTableName, string keyNameSuffix = "")
+        => syntax.WithColumn(fromColumnName).AsGuid().NotNullable()
+            .ForeignKey($"fk_{fromTableName}_{toTableName}{keyNameSuffix}", schema, toTableName, "id");
+    
     public static IAlterTableColumnOptionOrAddColumnOrAlterColumnOrForeignKeyCascadeSyntax AddMandatoryIdColumnWithForeignKey(
         this IAlterTableAddColumnOrAlterColumnSyntax syntax,
         string fromTableName,
@@ -66,4 +54,12 @@ public static class MigrationExtensions
         string toTableName,
         string keyNameSuffix = "")
         => syntax.AddColumn(fromColumnName).AsGuid().NotNullable().ForeignKey($"fk_{fromTableName}_{toTableName}{keyNameSuffix}", schema, toTableName, "id");
+    
+    public static void WithAuditColumns(this ICreateTableColumnOptionOrWithColumnSyntax syntax)
+        => syntax
+            .WithColumn("created_by").AsInt32().NotNullable()
+            .WithColumn("created_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
+            .WithColumn("modified_by").AsInt32().NotNullable()
+            .WithColumn("modified_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
+            .WithColumn("synchronized_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime);
 }

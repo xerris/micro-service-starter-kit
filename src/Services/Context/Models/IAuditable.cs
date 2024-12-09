@@ -13,7 +13,6 @@ public interface IAuditable
     DateTime? ModifiedOn { get; set; }
     int? ModifiedBy { get; set; }
     public int Version { get; set; }
-    public DateTime SynchronizedOn { get; set; }
 }
 
 public abstract class AuditImmutableBase : IAuditable, IDeleteable
@@ -25,5 +24,4 @@ public abstract class AuditImmutableBase : IAuditable, IDeleteable
     public int? ModifiedBy { get; set; }
     public int Version { get; set; }
     public bool IsDeleted { get; set; }
-    public DateTime SynchronizedOn { get; set; }
 }

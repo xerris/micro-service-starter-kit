@@ -10,13 +10,25 @@ public class _202409230732_CreateReadOnlyAndReadWriteRoles : Migration
     public override void Up()
     {
         var sb = new StringBuilder();
-        sb.Append($"create role {Roles.ReadOnly};");
+        // ReadOnly role
+        sb.Append($@"DO $$ 
+                        BEGIN 
+                          IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '{Roles.ReadOnly}') THEN 
+                            CREATE ROLE {Roles.ReadOnly}; 
+                          END IF; 
+                        END $$;");
         sb.Append($"grant connect on database {Databases.StarterKit} to {Roles.ReadOnly};");
         sb.Append($"grant usage on schema {Schemas.Public} to {Roles.ReadOnly};");
         sb.Append($"grant select on all tables in schema {Schemas.Public} to {Roles.ReadOnly};");
         sb.Append($"alter default privileges in schema {Schemas.Public} grant select on tables to {Roles.ReadOnly};");
 
-        sb.Append($"create role {Roles.ReadWrite};");
+        //ReadWriteRole
+        sb.Append($@"DO $$ 
+                        BEGIN 
+                          IF NOT EXISTS (SELECT FROM pg_roles WHERE rolname = '{Roles.ReadWrite}') THEN 
+                            CREATE ROLE {Roles.ReadWrite}; 
+                          END IF; 
+                        END $$;");
         sb.Append($"grant connect on database {Databases.StarterKit} to {Roles.ReadWrite};");
         sb.Append($"grant usage, create on schema {Schemas.Public} to {Roles.ReadWrite};");
         sb.Append($"grant all privileges on all sequences in schema {Schemas.Public} to {Roles.ReadWrite};");
