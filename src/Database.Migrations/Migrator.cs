@@ -1,5 +1,6 @@
 using FluentMigrator.Runner;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using Xerris.DotNet.Core;
 
 namespace Database.Migrations;
@@ -14,6 +15,7 @@ public class Migrator : IMigrator
 {
     public void Upgrade()
     {
+        Log.Debug("Migrator upgrade running");
         using var scope = IoC.CreateScope();
         var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
          runner.MigrateUp();

@@ -7,6 +7,9 @@ using Serilog;
 using Services;
 using Services.Context;
 using Xerris.DotNet.Core;
+using Xerris.DotNet.Data;
+using IConnectionBuilder = Xerris.DotNet.Data.IConnectionBuilder;
+using IConnectionStringProvider = Xerris.DotNet.Data.IConnectionStringProvider;
 
 namespace Database.Migrations;
 
@@ -29,7 +32,8 @@ public class AppStart : IAppStartup
             .Configure<RunnerOptions>(opt => opt.Tags = [builder.Configuration["stageName"]])
             .AddTransient<IVersionTableMetaData, CustomMetadataTable>();
 
-        collection.AddSingleton<IConnectionBuilder, LocalConnectionBuilder>();
+        collection.AddSingleton<IConnectionStringProvider, LocalConnectionStringProvider>();
+        collection.AddSingleton<IConnectionBuilder, ConnectionBuilder>();
 
         return builder.Configuration;
     }
@@ -37,7 +41,7 @@ public class AppStart : IAppStartup
     public void InitializeLogging(IConfiguration configuration, Action<IConfiguration> defaultConfig)
     {
         var loggerConfiguration = new LoggerConfiguration()
-            .MinimumLevel.Information()
+            .MinimumLevel.Debug()
             .WriteTo.Console(outputTemplate:
                 "[{Timestamp:HH:mm:ss} {Level}] {Message:lj}{NewLine}{Exception}");
 
