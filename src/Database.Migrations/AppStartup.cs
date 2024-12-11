@@ -30,8 +30,9 @@ public class AppStart : IAppStartup
                 .ScanIn(GetType().Assembly).For.Migrations())
             .AddLogging(lb => lb.AddSerilog(dispose: true))
             .Configure<RunnerOptions>(opt => opt.Tags = [builder.Configuration["stageName"]])
-            .AddTransient<IVersionTableMetaData, CustomMetadataTable>();
+            .AddTransient<IVersionTableMetaData, VersionTableMetaData>();
 
+        collection.AddSingleton<IVersionTableMetaData, VersionTableMetaData>();         
         collection.AddSingleton<IConnectionStringProvider, LocalConnectionStringProvider>();
         collection.AddSingleton<IConnectionBuilder, ConnectionBuilder>();
 
@@ -39,14 +40,10 @@ public class AppStart : IAppStartup
     }
 
     public void InitializeLogging(IConfiguration configuration, Action<IConfiguration> defaultConfig)
-    {
-        var loggerConfiguration = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo.Console(outputTemplate:
-                "[{Timestamp:HH:mm:ss} {Level}] {Message:lj}{NewLine}{Exception}");
-
-        Log.Logger = loggerConfiguration.CreateLogger();
-    }
+        => Log.Logger = new LoggerConfiguration()
+            .WriteTo
+            .Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+            .CreateLogger();
 
     private static string CreateConnectionString(IServiceProvider sp) =>
         sp.GetRequiredService<IConnectionBuilder>().AdminConnectionString;

@@ -7,12 +7,12 @@ using Xerris.DotNet.Data.Extensions;
 
 namespace Xerris.DotNet.Data;
 
-public abstract class DbContext : Microsoft.EntityFrameworkCore.DbContext
+public abstract class DbContext<T> : DbContext where T : DbContext
 {
     private readonly AuditVisitor auditVisitor;
     private Guid? TokenUserId { get; set; }
 
-    public DbContext(DbContextOptions<DbContext> options)
+    public DbContext(DbContextOptions<T> options)
         : base(options)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);

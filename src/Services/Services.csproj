@@ -29,6 +29,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Xerris.DotNet.Data.Postgress\Xerris.DotNet.Data.Postgress.csproj" />
       <ProjectReference Include="..\Xerris.DotNet.Data\Xerris.DotNet.Data.csproj" />
     </ItemGroup>
 

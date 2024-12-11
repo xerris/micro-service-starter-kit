@@ -1,6 +1,6 @@
 using Xerris.DotNet.Data.Domain;
 
-namespace Services.Domain;
+namespace Services.Services.Domain;
 
 public class Customer : AuditImmutableBase
 {

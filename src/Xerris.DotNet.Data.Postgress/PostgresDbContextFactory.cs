@@ -2,10 +2,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Xerris.DotNet.Data.Postgres;
 
-public class PostgresDataContextFactory<T> : DataContextFactory<T> where T : DbContext
+public abstract class PostgresDbContextFactory<T> : DbContextFactory<T> where T : DbContext
 {
-    public PostgresDataContextFactory(IConnectionBuilder connectionBuilder,
-        Func<DbContextOptions<T>, T> contextBuilder) : base(connectionBuilder, contextBuilder)
+    public PostgresDbContextFactory(IConnectionBuilder connectionBuilder) : base(connectionBuilder)
     {
     }
 

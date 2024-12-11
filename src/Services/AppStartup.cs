@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using Services.Context;
 using Xerris.DotNet.Core;
 using Xerris.DotNet.Data;
 
@@ -14,8 +15,10 @@ public class AppStart : IAppStartup
         var appConfig = builder.Build();
 
         collection.AddSingleton<IApplicationConfig>(appConfig);
-        collection.AutoRegister(typeof(IApplicationConfig).Assembly);
+        collection.AddSingleton<IConnectionStringProvider, LocalConnectionStringProvider>();
         collection.AddSingleton<IConnectionBuilder, ConnectionBuilder>();
+        collection.AddSingleton<IDbContextFactory, DbContextFactory>();
+        collection.AutoRegister(GetType().Assembly);
         
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         
