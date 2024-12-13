@@ -25,7 +25,7 @@ public class CustomerService : ICustomerService
         var dbContext = dbContextFactory.Create();
 
         var exists = await dbContext.Customers.FindByName(toCreate.Name);
-        Validate.Begin().IsNull(exists, $"Customer: {toCreate.Name} already exists").Check();
+        Validate.Begin().IsNull(exists, $"Customer: '{toCreate.Name}' already exists").Check();
 
         var created = await dbContext.Customers.AddAsync(toCreate);
         await dbContext.SaveChangesAsync();

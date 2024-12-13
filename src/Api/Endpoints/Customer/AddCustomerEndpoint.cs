@@ -1,5 +1,7 @@
 using Api.Models;
 using Api.Models.Mappers;
+using Api.Models.Requests.Customer;
+using Api.Models.Responses;
 using Api.Models.Validators;
 using Serilog;
 using Services.Services;

@@ -1,3 +1,4 @@
+using Api.Models.Requests.Customer;
 using Xerris.DotNet.Core.Validations;
 
 namespace Api.Models.Validators;

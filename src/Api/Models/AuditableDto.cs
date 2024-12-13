@@ -1,18 +1,4 @@
-using Microsoft.VisualBasic;
-using Services.Services.Domain;
-
 namespace Api.Models;
-
-public class AddCustomerRequest
-{
-    public string Name { get; set; } = string.Empty; 
-}
-
-public class AddCustomerResponse : AuditableDto
-{
-    public string Name { get; set; } = string.Empty;
-}
-
 
 public class AuditableDto
 {

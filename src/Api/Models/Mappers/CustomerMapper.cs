@@ -1,3 +1,5 @@
+using Api.Models.Requests.Customer;
+using Api.Models.Responses;
 using Services.Services.Domain;
 using Xerris.DotNet.Data.Domain;
 

@@ -1,6 +1,7 @@
 using System.Text.Json;
 using Api.Endpoints;
 using Api.Extensions;
+using Api.Middleware;
 using Serilog;
 using Services;
 using Xerris.DotNet.Core;
