@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Services.Constants;
 using Xerris.DotNet.Data;
 using Xerris.DotNet.Data.Postgres;
 
@@ -17,6 +18,8 @@ public class DbContextFactory : PostgresDbContextFactory<StarterDbContext>, IDbC
 
     protected override StarterDbContext Create(DbContextOptions<StarterDbContext> options)
     {
-        return new StarterDbContext(options);
+        var context = new StarterDbContext(options);
+        context.WithUserId(SystemUser.User.Id); //the default audit user
+        return context;
     }
 }

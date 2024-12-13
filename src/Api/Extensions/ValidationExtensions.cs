@@ -1,4 +1,6 @@
 using FluentValidation.Results;
+using Xerris.DotNet.Core.Validations;
+using ValidationException = Xerris.DotNet.Core.Validations.ValidationException;
 
 namespace Api.Extensions;
 
@@ -11,18 +13,9 @@ public class ValidationResponse
 public static class ValidationExtensions
 {
     public static List<ValidationResponse> ToResponse(this IEnumerable<ValidationFailure> errors)
-    {
-        var list = new List<ValidationResponse>();
-
-        foreach (var error in errors)
-        {
-            list.Add(new ValidationResponse
-            {
-                Property = error.PropertyName,
-                Message = error.ErrorMessage
-            });
-        }
-
-        return list;
-    }
+        => errors.Select(error => new ValidationResponse
+            { Property = error.PropertyName, Message = error.ErrorMessage }).ToList();
+    
+    public static string FriendlyPrint(this ValidationException ex)
+        => new FriendlyFormatter(ex).Message;
 }

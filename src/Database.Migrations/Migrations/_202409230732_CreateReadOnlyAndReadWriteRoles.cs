@@ -1,6 +1,7 @@
 using System.Text;
 using Database.Migrations.Constants;
 using FluentMigrator;
+using Services.Constants;
 
 namespace Skillz.Database.Migrations.Migrations;
 

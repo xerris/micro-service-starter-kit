@@ -57,9 +57,9 @@ public static class MigrationExtensions
     
     public static void WithAuditColumns(this ICreateTableColumnOptionOrWithColumnSyntax syntax)
         => syntax
-            .WithColumn("created_by").AsInt32().NotNullable()
+            .WithColumn("created_by").AsGuid().NotNullable()
             .WithColumn("created_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
-            .WithColumn("modified_by").AsInt32().NotNullable()
+            .WithColumn("modified_by").AsGuid().NotNullable()
             .WithColumn("modified_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime)
             .WithColumn("synchronized_on").AsDateTime().NotNullable().WithDefault(SystemMethods.CurrentUTCDateTime);
 }

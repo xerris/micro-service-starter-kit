@@ -2,42 +2,45 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Xerris.DotNet.Core.Time;
 using Xerris.DotNet.Data.Domain;
+using Xerris.DotNet.Data.Extensions;
 
 namespace Xerris.DotNet.Data.Audit;
 
 public interface IAuditVisitor
 {
-    void AcceptNew(EntityEntry entry);
-    void AcceptModified(EntityEntry entry);
-    void AcceptDeleted(EntityEntry entry);
-    Guid? UserId { get; set; }
+    void AcceptNew(EntityEntry entry, Guid? userId);
+    void AcceptModified(EntityEntry entry, Guid? userId);
+    void AcceptDeleted(EntityEntry entry, Guid? userId);
 }
 
 public class AuditVisitor : IAuditVisitor
 {
-    public void AcceptNew(EntityEntry entry)
+    public void AcceptNew(EntityEntry entry, Guid? userId)
     {
         if (entry.Entity is not IAuditable entityEntry) return;
 
         entityEntry.CreatedOn = Clock.Utc.Now;
         entityEntry.ModifiedOn = Clock.Utc.Now;
 
-        if (!UserId.HasValue) return;
+        if (!userId.HasValue) return;
         
-        entityEntry.ModifiedBy = UserId;
-        entityEntry.CreatedBy ??= UserId.Value;
+        entityEntry.ModifiedBy = userId.Value;
+        if (entityEntry.CreatedBy.IsNullOrEmpty())
+            entityEntry.CreatedBy = userId.Value;
+        entityEntry.Version += 1;
     }
 
-    public void AcceptModified(EntityEntry entry)
+    public void AcceptModified(EntityEntry entry, Guid? userId)
     {
         if (entry.Entity is not IAuditable entityEntry) return;
         entityEntry.ModifiedOn = Clock.Utc.Now;
 
-        if (!UserId.HasValue) return;
-        entityEntry.ModifiedBy = UserId;
+        if (!userId.HasValue) return;
+        entityEntry.ModifiedBy = userId;
+        entityEntry.Version += 1;
     }
 
-    public void AcceptDeleted(EntityEntry entry)
+    public void AcceptDeleted(EntityEntry entry, Guid? userId)
     {
         if(entry.Entity is not IAuditable auditableEntry) return;
         
@@ -45,9 +48,7 @@ public class AuditVisitor : IAuditVisitor
         entry.State = EntityState.Modified;
         auditableEntry.ModifiedOn = Clock.Utc.Now;
 
-        if (!UserId.HasValue) return;
-        auditableEntry.ModifiedBy = UserId.Value;
+        if (!userId.HasValue) return;
+        auditableEntry.ModifiedBy = userId.Value;
     }
-
-    public Guid? UserId { get; set; }
 }

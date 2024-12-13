@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Api.Endpoints;
 using Api.Extensions;
 using Serilog;
 using Services;
@@ -27,7 +28,6 @@ try
     builder.Services.AddAuthentication();
     builder.Services.AddAuthorization();
     builder.Services.AddFastEndpoints();
-        //.AddSwaggerDocument();
 
     var app = builder.Build();
 
@@ -38,6 +38,7 @@ try
 
     app.UseAuthentication();
     app.UseAuthorization();
+    app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
     app.UseFastEndpoints(options =>
     {

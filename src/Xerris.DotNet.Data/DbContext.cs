@@ -44,18 +44,18 @@ public abstract class DbContext<T> : DbContext where T : DbContext
         ChangeTracker
             .Entries()
             .Where(e => e is { Entity: IAuditable, State: EntityState.Added })
-            .ForEach(auditVisitor.AcceptNew);
+            .ForEach(x => auditVisitor.AcceptNew(x, TokenUserId));
 
         ChangeTracker
             .Entries()
             .Where(e => e is { Entity: IAuditable, State: EntityState.Modified })
-            .ForEach(auditVisitor.AcceptModified);
+            .ForEach(x => auditVisitor.AcceptModified(x, TokenUserId));
 
         //deleted entities
         ChangeTracker
             .Entries()
             .Where(e => e is { Entity: IDeleteable, State: EntityState.Deleted })
-            .ForEach(auditVisitor.AcceptDeleted);
+            .ForEach(x => auditVisitor.AcceptDeleted(x, TokenUserId));
 
         return await base.SaveChangesAsync(cancellationToken);
     }
