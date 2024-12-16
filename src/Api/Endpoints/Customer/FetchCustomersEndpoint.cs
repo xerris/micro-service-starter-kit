@@ -23,7 +23,7 @@ public class FetchCustomersEndpoint : EndpointWithoutRequest<IEnumerable<Custome
     {
         var nameFilter = Query<string>("name", false);
         var page = Query<int?>("page", false);
-        var pageSize = Query<int?>("pageSize", false);
+        var pageSize = Query<int?>("size", false);
         var includeContacts = Query<bool>("includeContacts", false);
 
         var result = await customerService.GetCustomersAsync(nameFilter!, page ?? 1, pageSize ?? 25, includeContacts)

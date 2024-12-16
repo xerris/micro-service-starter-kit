@@ -13,10 +13,17 @@ public class _202412080933_CreateCustomer : Migration
         Create.Table(Tables.Customer)
             .InSchema(Schemas.StarterKit)
             .WithId()
-            .WithColumn("name").AsString(50).Unique().NotNullable()
+            .WithColumn("name").AsString(50).NotNullable()
             .WithIsDeleted()
             .WithVersion()
             .WithAuditColumns();
+        
+        Create.Index("IX_Customer_Name_IsDeleted")
+            .OnTable(Tables.Customer)
+            .InSchema(Schemas.StarterKit)
+            .OnColumn("name").Ascending()
+            .OnColumn("is_deleted").Ascending()
+            .WithOptions().Unique();
 
         Create.Table(Tables.CustomerContact)
             .InSchema(Schemas.StarterKit)

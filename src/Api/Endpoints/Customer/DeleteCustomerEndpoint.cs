@@ -1,10 +1,9 @@
-using Api.Models.Requests.Customer;
 using Serilog;
 using Services.Services;
 
 namespace Api.Endpoints.Customer;
 
-public class DeleteCustomerEndpoint : Endpoint<DeleteCustomerRequest>
+public class DeleteCustomerEndpoint : EndpointWithoutRequest
 {
     private readonly ICustomerService service;
 
@@ -12,15 +11,16 @@ public class DeleteCustomerEndpoint : Endpoint<DeleteCustomerRequest>
     
     public override void Configure()
     {
-        Delete("/customers");
+        Delete("/customers/{id:guid}");
         AllowAnonymous();
     }
     
-    public override async Task HandleAsync(DeleteCustomerRequest req, CancellationToken ct)
+    public override async Task HandleAsync(CancellationToken ct)
     {
-        Log.Debug("Delete Customer: {@id}", req.Id);
+        var id = Route<Guid>("id");
+        Log.Debug("Delete Customer: {@id}", id);
         
-        await service.DeleteAsync(req.Id);
+        await service.DeleteAsync(id);
         await SendOkAsync(ct);
     }
 }
