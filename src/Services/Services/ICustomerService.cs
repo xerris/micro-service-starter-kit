@@ -10,7 +10,6 @@ public interface ICustomerService
 {
     Task<Customer> CreateAsync(Customer toCreate);
     Task DeleteAsync(Guid id);
-
     IAsyncEnumerable<Customer> GetCustomersAsync(string nameFilter, int page = 1,
         int pageSize = 25, bool? includeContacts = false);
 } 
