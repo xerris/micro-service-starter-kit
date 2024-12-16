@@ -1,7 +1,7 @@
-using Api.Models;
 using Api.Models.Mappers;
 using Api.Models.Requests.Customer;
 using Api.Models.Responses;
+using Api.Models.Responses.Customer;
 using Api.Models.Validators;
 using Serilog;
 using Services.Services;
@@ -13,8 +13,7 @@ public class AddCustomerEndpoint : Endpoint<AddCustomerRequest, AddCustomerRespo
 {
     private readonly ICustomerService service;
 
-    public AddCustomerEndpoint(ICustomerService service)
-        => this.service = service;
+    public AddCustomerEndpoint(ICustomerService service) => this.service = service;
 
     public override void Configure()
     {
@@ -26,7 +25,8 @@ public class AddCustomerEndpoint : Endpoint<AddCustomerRequest, AddCustomerRespo
     {
         Log.Debug("AddCustomer: {@customer}", req.ToJson());
         req.IsValid();
-        var created = await service.Create(req.ToCustomer());
+        var created = await service.CreateAsync(req.ToCustomer());
         Response = created.Created();
+        await SendOkAsync(ct);
     }
 }

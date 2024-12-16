@@ -1,4 +1,4 @@
-namespace Api.Models.Responses;
+namespace Api.Models.Responses.Customer;
 
 public class AddCustomerResponse : AuditableDto
 {

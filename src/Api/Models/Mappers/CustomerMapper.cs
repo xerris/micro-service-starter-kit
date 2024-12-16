@@ -1,5 +1,5 @@
 using Api.Models.Requests.Customer;
-using Api.Models.Responses;
+using Api.Models.Responses.Customer;
 using Services.Services.Domain;
 using Xerris.DotNet.Data.Domain;
 
@@ -12,6 +12,15 @@ public static class CustomerMapper
     public static AddCustomerResponse Created(this Customer customer)
         => new AddCustomerResponse { Name = customer.Name, Version = 1 }.ApplyAuditFields(customer);
 
+    public static IEnumerable<CustomerModel> ToModels(this List<Customer> customers)
+        => customers.Select(ToModel);
+    
+    public static CustomerModel ToModel(this Customer customer)
+        => new CustomerModel
+        {
+            Name = customer.Name
+        }.ApplyAuditFields(customer);
+    
     private static T ApplyAuditFields<T, TA>(this T dto, TA auditable) where T : AuditableDto
         where TA : IAuditable
     {
