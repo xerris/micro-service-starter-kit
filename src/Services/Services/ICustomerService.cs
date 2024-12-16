@@ -11,7 +11,7 @@ public interface ICustomerService
     Task<Customer> CreateAsync(Customer toCreate);
     Task DeleteAsync(Guid id);
 
-    Task<List<Customer>> GetCustomersAsync(string nameFilter, int page = 1,
+    IAsyncEnumerable<Customer> GetCustomersAsync(string nameFilter, int page = 1,
         int pageSize = 25, bool? includeContacts = false);
 } 
 
@@ -45,9 +45,9 @@ public class CustomerService : ICustomerService
         });
     }
 
-    public async Task<List<Customer>> GetCustomersAsync(string nameFilter, int page = 1,
+    public IAsyncEnumerable<Customer> GetCustomersAsync(string nameFilter, int page = 1,
         int pageSize = 25, bool? includeContacts = false)
-        => await GetAll(dbContext =>
+        => GetAsyncEnumerable(dbContext =>
             dbContext.Customers.GetCustomersAsync(nameFilter, page, pageSize, includeContacts));
 
     private async Task<T> DoAsync<T>(Func<StarterDbContext, Task<T>> action)
@@ -62,5 +62,11 @@ public class CustomerService : ICustomerService
     {
         var dbContext = dbContextFactory.Create();
         return await action(dbContext);
+    }
+
+    private IAsyncEnumerable<T> GetAsyncEnumerable<T>(Func<StarterDbContext, IAsyncEnumerable<T>> action)
+    {
+        var dbContext = dbContextFactory.Create();
+        return action(dbContext);
     }
 }

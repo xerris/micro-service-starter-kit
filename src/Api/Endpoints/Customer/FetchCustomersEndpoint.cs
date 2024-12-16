@@ -26,8 +26,10 @@ public class FetchCustomersEndpoint : EndpointWithoutRequest<IEnumerable<Custome
         var pageSize = Query<int?>("pageSize", false);
         var includeContacts = Query<bool>("includeContacts", false);
 
-        var result = await customerService.GetCustomersAsync(nameFilter!, page??1, pageSize??25, includeContacts);
+        var result = await customerService.GetCustomersAsync(nameFilter!, page ?? 1, pageSize ?? 25, includeContacts)
+            .SelectAwait(each => new ValueTask<CustomerModel>(each.ToModel()))
+            .ToListAsync(cancellationToken: ct);
         
-        await SendAsync(result.ToModels(), cancellation: ct);
+        await SendAsync(result, cancellation: ct);
     }
 }
